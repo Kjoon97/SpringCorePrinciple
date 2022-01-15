@@ -17,7 +17,7 @@ public class BeanDefinitionTest {
         for (String beanDefinitionName : beanDefinitionNames) {
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
 
-            //위에 ac 선언 시 AnnotationConfigApplicationContext이 아니라 ApplicationContext로 쓰면 getBeanDefinition()사용 못한다. 
+            //위에 ac 선언 시 AnnotationConfigApplicationContext이 아니라 ApplicationContext로 쓰면 getBeanDefinition()사용 못한다.
 
             if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
                 System.out.println("beanDefinitionName +  = " + beanDefinitionName + "beanDefinition = " + beanDefinition);
