@@ -18,16 +18,19 @@ public class AppConfig {         // 필요한 구현 객체를 여기서 생성�
 
     @Bean                             //각 메소드마다 @Bean붙이면 스프링 컨테이너에 등록이된다.
     public MemberService memberService(){                   //역할
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());   //구현
     }
 
     @Bean
     public OrderService orderService(){                                       //역할
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());    //구현
     }
 
     @Bean
     public MemberRepository memberRepository() {    //역할
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();        //구현 나중에 db바꾸고 싶으면 이 줄만 수정하면됨.
     }
 
