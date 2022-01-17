@@ -3,10 +3,12 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor    //필드에서 final로 선언한 변수들을 파라미터로 받는 생성자를 만들어준다.
 public class OrderServiceImpl implements OrderService{
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -21,11 +23,11 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;  //final은 값이 할당되어야 쓸 수 있는데 생성자를 통해서 할당도 됨.
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }     //-> @RequiredArgsConstructor가 이 코드를 자동으로 만들어줌.
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
